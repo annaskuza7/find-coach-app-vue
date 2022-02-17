@@ -1,9 +1,11 @@
 import { createStore } from 'vuex';
 
+import coachModule from './modules/coaches/index';
+
 const store = createStore({
-  modules: {},
-  actions: {},
-  getters: {},
+  modules: {
+    coaches: coachModule,
+  },
 });
 
 export default store;
