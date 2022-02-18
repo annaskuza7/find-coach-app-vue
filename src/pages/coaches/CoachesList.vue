@@ -1,26 +1,28 @@
 <template>
   <section>Filter</section>
   <section>
-    <div class="controls">
-      <button>Refresh</button>
-      <router-link to="/register">Register as Coach</router-link>
-    </div>
-    <ul v-if="hasCoaches">
-      <CoachItem
-        v-for="coach in filteredCoaches"
-        :key="coach.id"
-        :id="coach.id"
-        :firstName="coach.firstName"
-        :lastName="coach.lastName"
-        :rate="coach.hourlyRate"
-        :areas="coach.areas"
-      />
-    </ul>
-    <h3 v-else>No coaches found.</h3>
+    <BaseCard>
+      <div class="controls">
+        <BaseButton mode="outline">Refresh</BaseButton>
+        <BaseButton link to="/register">Register as Coach</BaseButton>
+      </div>
+      <ul v-if="hasCoaches">
+        <CoachItem
+          v-for="coach in filteredCoaches"
+          :key="coach.id"
+          :id="coach.id"
+          :firstName="coach.firstName"
+          :lastName="coach.lastName"
+          :rate="coach.hourlyRate"
+          :areas="coach.areas"
+        />
+      </ul>
+      <h3 v-else>No coaches found.</h3>
+    </BaseCard>
   </section>
 </template>
 <script>
-import CoachItem from '../../components/coaches/CoachItem.vue';
+import CoachItem from '@/components/coaches/CoachItem.vue';
 export default {
   components: { CoachItem },
   computed: {
