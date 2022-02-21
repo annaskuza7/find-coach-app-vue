@@ -2,6 +2,7 @@ export default {
   namespaced: true,
   state() {
     return {
+      userIsCoach: false,
       coaches: [
         {
           id: 'c1',
@@ -24,14 +25,35 @@ export default {
       ],
     };
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    registerCoach(state, payload) {
+      state.coaches.push(payload);
+    },
+  },
+  actions: {
+    registerCoach(context, data) {
+      const coachData = {
+        id: context.rootGetters.userId,
+        firstName: data.first,
+        lastName: data.last,
+        description: data.desc,
+        hourlyRate: data.rate,
+        areas: data.areas,
+      };
+      context.commit('registerCoach', coachData);
+    },
+  },
   getters: {
     coaches(state) {
       return state.coaches;
     },
     hasCoaches(state) {
       return state.coaches && state.coaches.length > 0;
+    },
+    isCoach(_, getters, _2, rootGetters) {
+      const coaches = getters.coaches;
+      const userId = rootGetters.userId;
+      return coaches.some((coach) => coach.id === userId);
     },
   },
 };
