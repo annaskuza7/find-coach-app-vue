@@ -79,8 +79,8 @@ export default {
 
       setTimeout(() => {
         this.$store.dispatch('coaches/loadCoaches');
-        this.isLoading = false;
       }, 500);
+      this.isLoading = false;
     },
   },
 };
