@@ -34,7 +34,8 @@ export default {
       if (!response.ok) {
         console.log(responseData);
         const error = new Error(
-          responseData.message || 'Failed to authenticate.'
+          responseData.message ||
+            'Failed to authenticate. Check your login data'
         );
         throw error;
       }
