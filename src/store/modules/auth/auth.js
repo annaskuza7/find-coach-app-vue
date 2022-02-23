@@ -79,10 +79,24 @@ export default {
         tokenExpiration: responseData.expiresIn,
       });
     },
+    logout(context) {
+      context.commit('setUser', {
+        token: null,
+        userId: null,
+        tokenExpiration: null,
+      });
+    },
   },
   getters: {
     userId(state) {
       return state.userId;
+    },
+    token(state) {
+      return state.token;
+    },
+
+    isAuthenticated(state) {
+      return !!state.token;
     },
   },
 };

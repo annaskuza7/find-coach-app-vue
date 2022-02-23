@@ -10,10 +10,14 @@
     <section>
       <BaseCard>
         <div class="controls">
-          <BaseButton mode="outline" @click="loadCoaches(true)"
-            >Refresh</BaseButton
-          >
-          <BaseButton v-if="!isCoach && !isLoading" link to="/register"
+          <BaseButton mode="outline" @click="loadCoaches(true)">
+            Refresh
+          </BaseButton>
+          <BaseButton link to="/auth" v-if="!isLoggedIn"> Login </BaseButton>
+          <BaseButton
+            v-if="!isCoach && !isLoading && isLoggedIn"
+            link
+            to="/register"
             >Register as Coach</BaseButton
           >
         </div>
@@ -54,6 +58,9 @@ export default {
     };
   },
   computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
     filteredCoaches() {
       const coaches = this.$store.getters['coaches/coaches'];
       return coaches.filter((coach) => {
