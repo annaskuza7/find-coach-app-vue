@@ -43,6 +43,7 @@ export default {
 
       context.commit('addRequest', newRequest);
     },
+
     async fetchRequests(context) {
       const coachId = context.rootGetters.userId;
       const response = await fetch(
