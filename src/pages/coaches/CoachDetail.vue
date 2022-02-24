@@ -10,7 +10,6 @@
       <BaseCard>
         <header>
           <h2>Interested? Reach out now!</h2>
-          <BaseButton link :to="contactLink">Contact</BaseButton>
         </header>
         <router-view></router-view>
       </BaseCard>
@@ -49,9 +48,6 @@ export default {
     },
     description() {
       return this.selectedCoach.description;
-    },
-    contactLink() {
-      return this.$route.path + '/' + this.id + '/contact';
     },
   },
   created() {

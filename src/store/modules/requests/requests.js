@@ -37,7 +37,6 @@ export default {
         throw error;
       }
 
-      console.log(responseData);
       newRequest.id = responseData.name;
       newRequest.coachId = payload.coachId;
 
