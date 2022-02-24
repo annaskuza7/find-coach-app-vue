@@ -11,8 +11,8 @@
 import Header from './components/Layout/Header.vue';
 export default {
   components: { Header },
-  data() {
-    return {};
+  created() {
+    this.$store.dispatch('tryLogin');
   },
 };
 </script>
